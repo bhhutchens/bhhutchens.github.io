@@ -1,9 +1,0 @@
-Shereef's Fireside Chat
-
-October 31st, 2014
-
-Here's my take on the DBC experience from Shereef's Fireside Chat: it's an immersive technological/cultural bootcamp. It's about learning how to code and interact with others. It's about being a productive and effecient team member, and ultimately a better coder. It's NOT about being a passive learner, consuming information and reciting it. It's about engaging with the curriculum, learning from others, and teaching yourself and others along the way.
-
-My impression of DBC is that it's going to be incredibly challenging both academically and emotionally. But I feel that because of the trying nature of the curriculum, it'll also be a communal undertaking--like a play or a sports team. It's going to take all of us to pull it off and be successful. And in the course of it all, we'll be pulled together into a team. This is why the distinction between being in the kitchen and making the meal versus being in the restaurant and ordering the meal is an important one. Having the mindset of being in the kitchen makes one more willing to jump in and contribute, to teach others, and to learn in a much more collaborative atmosphere. If one is ordering the meal, so to speak, they're going to be passive consumers, not as willing to jump up and play the important role of helping us help each other.
-
-I would say that my expectations about DBC have never been concrete. However, I have always felt this was going to be a collaborative endeavor, though I didn't realize to what extent. Honestly, I'm excited to participate in this kind of learning environment. This is going to be an incredible experience!
