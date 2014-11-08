@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+  <title>Title of Blog</title>
+  <link type="text/css" rel="stylesheet" href="../stylesheets/blog-stylesheet.css"/>
+</head>
+<body>
+  <div id="header">
+    <p>
+      Brandon Hutchens
+    </p>
+  </div>
+  <div id="menu-bar">
+    <a href="#">
+      <p>
+        Home
+      </p>
+    </a>
+    <a href="#">
+      <p>
+        Projects
+      </p>
+    </a>
+    <a href="#">
+      <p>
+        Blog
+      </p>
+    </a>
+    <a href="#">
+      <p>
+        About
+      </p>
+    </a>
+  </div>
+  <div class="content">
+    <p id="title">
+      The Difference Between Margin, Padding, and Border
+    </p>
+    <p id="date">
+      November 7, 2014
+    </p>
+    <img id="image" src="images/margin-padding.gif">
+    <p id="post">
+      <p>
+        One of the confusing things about fine-tuning the placement of elements using CSS is utilizing the properties of margin, padding, and border correctly. First, let us start with the basic definitions. The content of the element is the crux of the element--the text or image, in most cases. But the element does not end at the text. Instead, the padding surrounds the content and reaches out to the border. The border is the edge of the element. So, if a color is applied, it reaches to the border and not beyond. The space beyond the border is called the margin. The margin is a blank space around the element that does not allow other elements to cross it, keeping the element separate.
+      </p>
+      <p>
+        When working in CSS, the property "padding" allows one to add space around the content, inside the border, chaning how far the content is from the border. This also affects the element's size. For example, if one has a division that is 10 by 10 pixels and a padding of 5 pixels, the dimensions of the element will actually be 15 by 15 pixels.
+      </p>
+      <p>
+        The "margin" property, on the other hand, applies space to the outside of the element, outside the border. This affects how far away the element is from other elements. However, there is one trick to this: top and bottom margins are collapsible. When one element is on top of another element, the margin between them will be the largest margin, not the sum of the margins of both elements. For example, if the top element has a margin of 25 pixels and the bottom element has a margin of 75 pixels, the displayed margin will be 75 pixels, not 100 pixels.
+      </p>
+      <p>
+        Hopefully I've been able to clear up the difference between margin, padding, and border. At the very least, the above image should make much more sense.
+      </p>
+    </p>
+  </div>
+  <div id="footer">
+  </div>
+  </body>
+</html>
