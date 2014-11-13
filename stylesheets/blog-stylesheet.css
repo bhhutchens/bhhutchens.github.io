@@ -1,17 +1,25 @@
 /*index specific*/
 
+body {
+  background-color: black;
+}
+
 a:link {
-  text-decoration: none;
   color: white;
 }
 
 a:visited {
+  color: white;
+}
+
+#menu-bar a:link {
   text-decoration: none;
   color: white;
 }
 
-body {
-  background-color: black;
+#menu-bar a:visited {
+  text-decoration: none;
+  color: white;
 }
 
 #menu-bar {
