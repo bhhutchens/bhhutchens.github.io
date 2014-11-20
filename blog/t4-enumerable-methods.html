@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+  <head>
+    <title>
+      Brandon Hutchens' Blog
+    </title>
+    <link type="text/css" rel="stylesheet" href="../stylesheets/blog-stylesheet.css"/>
+  </head>
+  <body>
+    <div id="menu-bar">
+      <a href="../index.html">
+        <p>
+          Home
+        </p>
+      </a>
+      <a href="../projects.html">
+        <p>
+          Projects
+        </p>
+      </a>
+      <a href="index.html">
+        <p>
+          Blog
+        </p>
+      </a>
+      <a href="../about.html">
+        <p>
+          About
+        </p>
+      </a>
+    </div>
+    <div id="content">
+      <div id="blog-box">
+        <h1>
+          Enumerable #group_by
+        </h1>
+        <h2>
+          November 20, 2014
+        </h2>
+        <p>
+          <p>
+            So let's say you have a collection object, such as an array, and you want to sort the array based on the result of some block of code. Turns out there's a simple way to do so using the Enumerable Method, group_by.
+          </p>
+          <p>
+            Group_by takes a block and returns a hash. Each object in the collection is sent through the block, returning some result. Each unique result is set as the key in a new hash. The value of that key then becomes an array of the objects in the original collection which produced that key/result.
+          </p>
+          <p>
+            For example, let's say you have a group of names that you want to organize by length.
+          </p>
+          <p>
+            <code language='ruby'>
+              array = ["Lara", "Sam", "Roth", "Joslin", "Alex", "Angus", "Jonah", "James"]
+            </code>
+          </p>
+          <p>
+            <code>
+              hash = array.group_by { |name| name.length }
+            </code>
+          </p>
+          <p>
+            If we puts hash, we get:
+          </p>
+          <p>
+            <code language='ruby'>
+              {3=>["Sam"], 4=>["Lara","Roth","Alex"], 5=>["Angus", "Jonah", "James"], 6=>["Joslin"]}
+            </code>
+          </p>
+          <p>
+            It's as simple as that.
+          </p>
+        </p>
+      </div>
+    </div>
+    <div id="footer">
+    </div>
+  </body>
+</html>
