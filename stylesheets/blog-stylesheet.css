@@ -156,6 +156,10 @@ a:visited {
   text-align: left;
 }
 
+#blog-box ul{
+  font-family: Verdana, sans-serif;
+}
+
 /*project specific*/
 
 #projects-box {
