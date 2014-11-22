@@ -45,10 +45,10 @@
             Group_by takes a block and returns a hash. Each object in the collection is sent through the block, returning some result. Each unique result is set as the key in a new hash. The value of that key then becomes an array of the objects in the original collection which produced that key/result.
           </p>
           <p>
-            For example, let's say you have a group of names that you want to organize by length.
+            For example, let's say you have a list of names that you want to group by length.
           </p>
           <p>
-            <code language='ruby'>
+            <code>
               array = ["Lara", "Sam", "Roth", "Joslin", "Alex", "Angus", "Jonah", "James"]
             </code>
           </p>
@@ -61,12 +61,39 @@
             If we puts hash, we get:
           </p>
           <p>
-            <code language='ruby'>
-              {3=>["Sam"], 4=>["Lara","Roth","Alex"], 5=>["Angus", "Jonah", "James"], 6=>["Joslin"]}
+            <code>
+              {3=>["Sam"], 4=>["Lara", "Roth", "Alex"], 5=>["Angus", "Jonah", "James"], 6=>["Joslin"]}
             </code>
           </p>
           <p>
-            It's as simple as that.
+            The returned hash has keys that represent the values returned by the block (in this case, the length of each name). The values of the hash are the array elements that resulted in that particular key when passed to the block (in this case, the names).
+          </p>
+          <p>
+            Another example: say you want to group a list of numbers by evens and odds.
+          </p>
+          <p>
+            <code>
+              array = [1, 2, 3, 4, 5, 6]
+            </code>
+          </p>
+          <p>
+            <code>
+              hash = array.group_by { |number| number % 2 }
+            </code>
+          </p>
+          <p>
+            Puts hash, and:
+          </p>
+          <p>
+            <code>
+              {1=>[1, 3, 5], 0=>[2, 4, 6]}
+            </code>
+          </p>
+          <p>
+            In this case, the numbers in the array are sent through the block of code. 1 returned 1, 2 returned 0, 3 returned 1, 4 returned 0, and so on. Each unique returned result (1 and 0) is a key in the hash, and the values are the numbers in the array that returned that value.
+          </p>
+          <p>
+            Group_by is thus a handy method for sorting collection objects into hashes based on the result of a block.
           </p>
         </p>
       </div>
