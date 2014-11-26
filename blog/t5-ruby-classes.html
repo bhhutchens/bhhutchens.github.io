@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+  <head>
+    <title>
+      Brandon Hutchens' Blog
+    </title>
+    <link type="text/css" rel="stylesheet" href="../stylesheets/blog-stylesheet.css"/>
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+  </head>
+  <body>
+    <div id="menu-bar">
+      <a href="../index.html">
+        <p>
+          Home
+        </p>
+      </a>
+      <a href="../projects.html">
+        <p>
+          Projects
+        </p>
+      </a>
+      <a href="index.html">
+        <p>
+          Blog
+        </p>
+      </a>
+      <a href="../about.html">
+        <p>
+          About
+        </p>
+      </a>
+    </div>
+    <div id="content">
+      <div id="blog-box">
+        <h1>
+          Seeing with Ruby Classes
+        </h1>
+        <h2>
+          November 26, 2014
+        </h2>
+        <p>
+          <p>
+            In Ruby, everything is an object. When you want something done in Ruby, you ask an object to do it. You ask 2 to add 2 to itself, rather than abstractly add 2 plus 2. As such, a programmer's challenge is largely about engineering objects to have a role and play that role effectively. For example, I might want to create a catalog of all my books. In doing so, I want to create an object <code>book</code>, which is able to return its title, author, and other information. But I have 100 books. Now I face the problem of defining 100 books and writing methods for all 100 to return the proper information. Instead, a general book <em>class</em> can be defined so that every instance of that class, a specific book object, will have the methods it needs to return the title and author. As such, defining a class represents grouping methods, so that objects created from that class behave similarly.
+          </p>
+          <p>
+            Let's dive deeper into the book example and the difference between classes and objects (though in Ruby, classes are themselves objects). In this case, the book <em>object</em> is a specific book with a title and an author, at the least. The book <em>class</em> is a generic book, one that doesn't have information associated with it until we create a specific, new book object. As mentioned, a class consists of a collection of method definitions. Methods that are meant to be shared among all instances of the class are called instance methods (as opposed to singleton methods which work on one particular object–we briefly proposed using these until we realized we had 100 books). Let's define the class <code>Books</code> and two methods for setting and retrieving the title.
+          </p>
+          <p>
+            <pre class="prettyprint lang-rb" skin=default>
+              class Books
+                def set_title(string)
+                  @title = string
+                end
+
+                def get_title
+                  @title
+                end
+              end
+
+              book = Books.new
+              book.set_title("The Name of the Wind")
+              puts book.get_title
+              => "The Name of the Wind"
+            </pre>
+          </p>
+          <p>
+            The code returns the title of the book! A couple things to note: first, the variables in the class start with a single @. This is to denote they are <em>instance variables</em>. Instance varaibles allow individual objects of that class to remember a state or variable. As such, instance variables are only visible to the object to which they belong. Additionally, an instance variable created in one method can be used by any other method in that class, unlike local variables. This is how an object can remember its state. Notice that @title is created in set_title and retrieved in get_title–two separate methods. The second thing to note is that the <code>book</code> object is created using the <code>new</code> method on the <code>Books</code> class. <code>new</code> is a constructor method for the class, which creates and returns a new instance of the class.
+          </p>
+          <p>
+            Let's say we want to set the title of the book at the moment of the object's creation, rather than setting it later. We can do the following:
+          </p>
+          <p>
+            <pre class="prettyprint lang-rb">
+              class Books
+                def initialize(string)
+                  @title = string
+                end
+
+                def get_title
+                  @title
+                end
+              end
+
+              book = Books.new("The Name of the Wind")
+              puts book.get_title
+              => "The Name of the Wind"
+            </pre>
+          </p>
+          <p>
+            Here we've used the special method <code>initialize</code> to execute the block of code every time a new instance of the class is created. In this case, we're requiring a string at the moment of creation, which is set as the title. If we wanted to change the title at a later time other than initialization, we would need a setter method, like we've saw above with <code>set_title</code>. In this case, <code>set_title</code> sets or writes the title attribute for the book. Attributes are properties of an object whose value can be read and/or written through the object. The <code>get_title</code> method similarly gets or reads the title and returns it. Because setting and getting (or writing and reading) attributes is so common, Ruby offers some syntactic sugar to streamline the process:
+          </p>
+          <p>
+            <pre class="prettyprint lang-rb">
+              class Books
+                attr_reader :title
+                attr_writer :title
+              end
+
+              book = Books.new
+              book.title("The Name of the Wind")
+              puts book.title
+              => "The Name of the Wind"
+            </pre>
+          </p>
+          <p>
+            Here, <code>attr_reader</code> replaces the <code>get_title</code> method and <code>attr_writer</code> replaces the <code>set_title</code> method. The colon in <code>:title</code> denotes that it is a symbol, roughly equivalent to a string. Because we can both read and write the title, we could condense the code even further using <code>attr_accessor</code>, which is the equivalent of <code>attr_writer</code> plus <code>attr_reader</code>.
+          </p>
+          <p>
+            <pre class="prettyprint lang-rb">
+              class Books
+                attr_accessor :title
+              end
+
+              book = Books.new
+              book.title("The Name of the Wind")
+              puts book.title
+              => "The Name of the Wind"
+            </pre>
+          </p>
+          <p>
+            As a final example, let's add in the ability to read/write the author and set the title using the <code>initialize</code> method again, but only allow reading of the title:
+          </p>
+          <p>
+            <pre class="prettyprint lang-rb">
+              class Books
+                attr_reader :title
+                attr_accessor :author #note we could add more attributes by separating with a comma
+
+                def initialize(string)
+                  @title = string
+                end
+              end
+
+              book = Books.new("The Name of the Wind")
+              puts book.title
+              => "The Name of the Wind"
+              book.author("Patrick Rothfuss")
+              puts book.author
+              => "Patrick Rothfuss"
+            </pre>
+          </p>
+          <p>
+            In conclusion, classes are extrememly useful in creating organized and logical code. By developing a class and creating instances of that class, you can share behaviors among objects, lessening your work and making your code more efficient.
+        </p>
+      </div>
+    </div>
+    <div id="footer">
+    </div>
+  </body>
+</html>
