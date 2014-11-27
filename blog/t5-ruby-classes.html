@@ -46,7 +46,7 @@
             Let's dive deeper into the book example and the difference between classes and objects (though in Ruby, classes are themselves objects). In this case, the book <em>object</em> is a specific book with a title and an author, at the least. The book <em>class</em> is a generic book, one that doesn't have information associated with it until we create a specific, new book object. As mentioned, a class consists of a collection of method definitions. Methods that are meant to be shared among all instances of the class are called instance methods (as opposed to singleton methods which work on one particular object–we briefly proposed using these until we realized we had 100 books). Let's define the class <code>Books</code> and two methods for setting and retrieving the title.
           </p>
           <p>
-            <pre class="prettyprint lang-rb" skin=default>
+            <pre class="prettyprint lang-rb">
               class Books
                 def set_title(string)
                   @title = string
