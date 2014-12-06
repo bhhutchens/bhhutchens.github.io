@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+  <head>
+    <title>
+      Brandon Hutchens' Blog
+    </title>
+    <link type="text/css" rel="stylesheet" href="../stylesheets/blog-stylesheet.css"/>
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+  </head>
+  <body>
+    <div id="menu-bar">
+      <a href="../index.html">
+        <p>
+          Home
+        </p>
+      </a>
+      <a href="../projects.html">
+        <p>
+          Projects
+        </p>
+      </a>
+      <a href="index.html">
+        <p>
+          Blog
+        </p>
+      </a>
+      <a href="../about.html">
+        <p>
+          About
+        </p>
+      </a>
+    </div>
+    <div id="content">
+      <div id="blog-box">
+        <h1>
+          Class Methods
+        </h1>
+        <h2>
+          December 5, 2014
+        </h2>
+        <p>
+          <p>
+            Class methods are methods defined on a class object, as opposed to instances of the class. These methods are accessible through the class object, but not through the individual instances of that class. Let's examine a <code>Books</code> class which includes a class method for finding the <code>book</code> object with the most pages.
+          </p>
+          <p>
+            <pre class="prettyprint lang-rb">
+              class Books
+                attr_reader :title
+                attr_accessor :page_count
+
+                def initialize(string)
+                  @title = string
+                end
+
+                def Books.largest(*books)
+                  books.max_by(&:page_count)
+                end
+              end
+
+              book1 = Books.new("The Name of the Wind")
+              book1.page_count = 1000
+
+              book2 = Books.new("Bossypants")
+              book2.page_count = 100
+
+              book3 = Books.new("Dune")
+              book3.page_count = 300
+
+              largest = Books.largest(.book1, book2, book3)
+              puts largest.title
+              => "The Name of the Wind"
+            </pre>
+          </p>
+          <p>
+            Notice that defining the class method includes the reference to the class object: <code>Books.largest</code>. The method takes a number of <code>book</code> objects and returns the book with the largest page count. We still use instance methods when we set the page count and access the title of the largest book.
+          </p>
+          <p>
+            The purpose of class methods is to fill the role of methods that cannot be performed on individual instances of the class. For example, the built-in <code>new</code> method is a class method, because until an instance has been created, we cannot send it a method call! So <code>new</code> must be called on the class to first create the instance. In the <code>Books</code> example above, it would not make sense to ask an individual <code>book</code> instance to find the largest book out of all of them. It makes much more sense to ask the entire class of <code>Books</code> to find the largest <code>book</code> object. Creating a class method is thus partly a design decision.
+          </p>
+          <p>
+            Let's extend our class to incorporate a method that will alphabetize our books by title and then return the first book. Because it makes more sense to ask the class to alphabetize all the books, as opposed to asking one <code>book</code> object to alphabetize all instances, we'll use another class method.
+          </p>
+          <p>
+            <pre class="prettyprint lang-rb">
+              class Books
+                attr_reader :title
+                attr_accessor :page_count
+
+                def initialize(string)
+                  @title = string
+                end
+
+                def Books.largest(*books)
+                  books.max_by(&:page_count)
+                end
+
+                def Books.alpha_first(*books)
+                  alpha_array = books.sort_by(&:title)
+                  alpha_array[0]
+                end
+
+              end
+
+              book1 = Books.new("The Name of the Wind")
+
+              book2 = Books.new("Bossypants")
+
+              book3 = Books.new("Dune")
+
+              first_book = Books.alpha_first(book1, book2, book3)
+              puts first_book.title
+              => "Bossypants"
+            </pre>
+          </p>
+          <p>
+            Notice that the class method <code>Books.alpha_first</code> takes an array of books and returns the first element in a sorted array of <code>book</code> objects that is alphabetized by title. As such, we call the instance method <code>title</code> on the <code>book</code> object in order to get it to return just its title.
+          </p>
+          <p>
+            In conclusion, class methods are methods called on the class object. They represent methods that are not called on instances of a class, but on the class itself, for design and practical purposes.
+          </p>
+        </p>
+      </div>
+    </div>
+    <div id="footer">
+    </div>
+  </body>
+</html>
