@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+  <head>
+    <title>
+      Brandon Hutchens' Blog
+    </title>
+    <link type="text/css" rel="stylesheet" href="../stylesheets/blog-stylesheet.css"/>
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+  </head>
+  <body>
+    <div id="menu-bar">
+      <a href="../index.html">
+        <p>
+          Home
+        </p>
+      </a>
+      <a href="../projects.html">
+        <p>
+          Projects
+        </p>
+      </a>
+      <a href="index.html">
+        <p>
+          Blog
+        </p>
+      </a>
+      <a href="../about.html">
+        <p>
+          About
+        </p>
+      </a>
+    </div>
+    <div id="content">
+      <div id="blog-box">
+        <h1>
+          Ruby Hashes Versus JavaScript Objects
+        </h1>
+        <h2>
+          December 11, 2014
+        </h2>
+        <p>
+          <p>
+            In Ruby, an object can be any data structure or value, from strings and ints, to arrays and hashes. Objects also understand certain methods, which are executable routines the object can trigger. Objects are instances of a class, which define groups of behavior and functionality. Classes can be written and modified to create objects with certain attributes and behaviors. In JavaScript, an object is a variable that contains many properties with many values. Let's break that down. The following code creates a variable named <code>captain</code>.
+          </p>
+          <p>
+            <pre class="prettyprint lang-js">
+              var captain = "Katherine Janeway"
+            </pre>
+          </p>
+          <p>
+            This variable points to a single value, in this case the string "Janeway". If we wanted to assign many values to the variable, it becomes an object. Each value is paired with a particular property. The syntax is as follows:
+          </p>
+          <p>
+            <pre class="prettyprint lang-js">
+              var captain = {
+                name: "Katherine Janeway",
+                ship: "USS Voyager",
+                favorite drink: "coffee, black"
+              }
+            </pre>
+          </p>
+          <p>
+            As such, Javascript objects are variables too, but can contain many values. Above, <code>captain</code> has many values ("Katherine Janeway", "USS Voyager", "coffee, black"). The values are paired with the particular property they describe (name, ship, favorite drink). Each property is written as a name, followed by a colon, followed by the value. Each property/value pair is separated by a comma. All property/value pairs are enclosed in curly braces.
+          </p>
+          <p>
+            To access the properties and the values inside JavaScript objects, one can use the dot notation or square brackets: <code>captain.name</code> or <code>captain[name]</code>. The difference between the two is how <code>name</code> is interpreted. With dot notation, the part after the dot must be a property named in the object. With square brackets, the expression in the brackets is evaluated to get a property name. To create a new value for a property, use = after the call. The property's value will be replaced or a new property created if it does not exist.
+          </p>
+          <p>
+            Seeing a Javascript object and especially how values are accessed in those objects, it becomes apparent that Javascript objects are very similar to Ruby hashes. A hash in Ruby is a collection of objects (and is an object itself). It consists of key/value pairs. Any Ruby object can be a key or value. Let's create a hash consistent with the above <code>captain</code>.
+          </p>
+          <p>
+            <pre class="prettyprint lang-rb">
+              captain = { "name" => "Katherine Janeway",
+                          "ship" => "USS Voyager",
+                          "favorite drink" => "coffee, black"}
+            </pre>
+          </p>
+          <p>
+            Above, the <code>captain</code> hash contains keys ("name", "ship", "favorite drink") that point to their respective values ("Katherine Janeway", "USS Voyager", "coffee, black") using =>. Each key/value pair is separated with a comma, and all are enclosed in curly brackets. To access a value, square brackets are used: <code>captain["favorite drink"]</code> will return <code>"coffee, black"</code>. To add/modify a key/value pair, similar to JavaScript objects, use the = operator: <code>captain["OTP"] = "Seven of Nine"</code>.
+          </p>
+          <p>
+            In conclusion, Ruby hashes and JavaScript objects are very similar conceptually. They both relay the same type of paired property/value information. They differ syntactically in their creation, but are strikingly similar with respect to accessing their values.
+          </p>
+        </p>
+      </div>
+    </div>
+    <div id="footer">
+    </div>
+  </body>
+</html>
