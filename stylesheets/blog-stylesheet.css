@@ -158,6 +158,12 @@ a:visited {
 
 #blog-box ul{
   font-family: Verdana, sans-serif;
+  color: white;
+}
+
+#blog-box ol{
+  font-family: Verdana, sans-serif;
+  color: white;
 }
 
 /*project specific*/
